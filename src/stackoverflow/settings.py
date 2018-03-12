@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
     'categories.apps.CategoriesConfig',
+    'questions.apps.QuestionsConfig',
+    'users.apps.UsersConfig',
 ]
 
 AUTH_USER_MODEL = 'core.User'
