@@ -1,0 +1,9 @@
+{% extends "core/base.html" %}
+
+{% block title %} {{ questions.name }} {{ questions.id }} {% endblock %}
+
+{% block content %}
+    <a href={% url "questions:question_list" %} >All question</a><br>
+    <div>This is question detail</div>
+
+{% endblock %}

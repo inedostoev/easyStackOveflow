@@ -1,0 +1,9 @@
+{% extends "core/base.html" %}
+
+{% block title %} Question list {% endblock %}
+
+{% block content %}
+    {% for question in questions %}
+        <a href={% url "questions:question_detail" question_id=question.id %}><div>{{ question.name}}</div></a>
+    {% endfor %}
+{% endblock %}

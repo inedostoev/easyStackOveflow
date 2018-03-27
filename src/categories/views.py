@@ -2,17 +2,21 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from django.shortcuts import HttpResponse
+from .models import Category
 
 
 def categories_list(request):
-    cType = request.GET.get('sort')
-    if str(cType) == "None":
-        cType = ""
 
-    return HttpResponse('This is list of {} categories'.format(cType))
+    contex = {
+        'categories': Category.objects.all()
+    }
+
+    return render(request, 'category/category_list.html', contex)
 
 
 def category_detail(request, category_id):
 
-    return HttpResponse('This is page category {}'.format(category_id))
+    contex = {
+        'category': Category.objects.get(id=category_id)
+    }
+    return render(request, 'category/category_detail.html', contex)

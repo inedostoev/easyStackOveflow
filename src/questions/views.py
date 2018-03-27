@@ -2,28 +2,25 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from django.shortcuts import HttpResponse
-
-
-def search_question(request):
-
-    return HttpResponse('Here you can search question')
+from .models import Question
 
 
 def add_question(request):
 
-    return HttpResponse('Here you can add question')
+    return render(request, 'questions/add_question.html')
 
 
 def questions_list(request):
-    qType = request.GET.get('sort')
 
-    if str(qType) == "None":
-        qType = ""
-
-    return HttpResponse('This is list of {} questions'.format(qType))
+    contex = {
+        'questions': Question.objects.all()
+    }
+    return render(request, 'questions/question_list.html', contex)
 
 
 def question_detail(request, question_id):
 
-    return HttpResponse('This is question {}'.format(question_id))
+    contex = {
+        'question': Question.objects.get(id=question_id),
+    }
+    return render(request, 'questions/question_detail.html', contex)

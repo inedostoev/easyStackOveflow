@@ -1,0 +1,9 @@
+{% extends "core/base.html" %}
+
+{% block title %} This is the main page {% endblock %}
+
+{% block content %}
+    <a href={% url "questions:add_question" %}>add question</a><br><br>
+    <a href={% url "categories:all_categories" %}>All categories</a><br>
+    <a href={% url "questions:question_list" %}>All questions</a><br>
+{% endblock %}

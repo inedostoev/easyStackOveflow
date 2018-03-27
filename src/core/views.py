@@ -4,12 +4,13 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from django.shortcuts import HttpResponse
 
+
 def index(request):
 
-    name = request.GET.get('name')
+    return render(request, 'core/index_page.html')
 
-    if str(name) == "None":
-        name = ""
 
-    return HttpResponse('This is main page. Hello {}'.format(name))
+def search_question(request):
+
+    return render(request, 'core/search.html')
 
