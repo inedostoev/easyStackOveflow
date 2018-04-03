@@ -1,0 +1,15 @@
+{% extends "core/base.html" %}
+
+{% block title %}Редактирование вопроса: {{ question }}{% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        Новое имя вопроса: {{ form.name }}<br>
+        Тело вопроса: <textarea name="question_body">{{ form.question_body.value }}</textarea><br>
+        Категории: {{ form.categories }}<br>
+        Удалить вопрос? {{ form.is_archive }}
+        <input type="submit" value="Редактировать"><br>
+    </form>
+    <a href={% url "categories:all_categories" %}>Back to all categories</a>
+{% endblock %}

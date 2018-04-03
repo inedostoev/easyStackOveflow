@@ -4,7 +4,9 @@
 
 {% block content %}
     <a href={% url "categories:all_categories" %} >All categories</a><br><br>
-
+    {% if category.author == user %}
+        <a href={% url "categories:category_edit" category_id=category.id %}>EDIT</a>
+    {% endif %}
     <div>
         <div>Questions in category: {{ category.name }}</div>
         {% for question in category.questions.all %}

@@ -15,12 +15,19 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from core.views import index, search_question
+from core import views as core
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', index, name='index'),
-    url(r'^search/$', search_question, name='search'),
+
+    url(r'^login/$', core.UserLogin.as_view(), name='login'),
+    url(r'^logout/$', core.logout, name='logout'),
+    url(r'^register/$', core.UserAdd.as_view(), name='register'),
+    url(r'^profile/$', core.profile, name='profile'),
+
+    url(r'^$', core.index, name='index'),
+    url(r'^search/$', core.search_question, name='search'),
 
     url(r'categories/', include('categories.urls', namespace='categories')),
     url(r'questions/', include('questions.urls', namespace='questions')),

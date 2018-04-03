@@ -8,7 +8,7 @@ from .models import Category
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
 
-    list_display = 'name', 'is_archive',
-    search_fields = 'name',
+    list_display = 'name', 'author', 'is_archive',
+    search_fields = 'name', 'author',
     list_filter = 'is_archive',
 

@@ -3,7 +3,14 @@
 {% block title %} Categories list {% endblock %}
 
 {% block content %}
+    <form action="" method="get">
+        Поиск: {{ categories_form.search }}
+        Сортировка: {{ categories_form.sort }}
+        <button>Найти</button>
+    </form>
+
     {% for category in categories %}
         <a href={% url "categories:category_detail" category_id=category.id %}><div>{{ category.name}}</div></a>
     {% endfor %}
+    <br><a href={% url "categories:category_create" %}>Add category</a><br>
 {% endblock %}

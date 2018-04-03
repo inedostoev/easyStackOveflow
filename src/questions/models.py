@@ -9,6 +9,7 @@ from categories.models import Category
 class Question(models.Model):
 
     name = models.CharField(max_length=255, verbose_name=u'Вопрос')
+    question_body = models.CharField(max_length=1024, verbose_name=u'Тело вопроса', null=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='questions', verbose_name=u'Автор')
     categories = models.ManyToManyField(Category, blank=True, related_name='questions', verbose_name=u'Категории')
     is_archive = models.BooleanField(default=False, verbose_name=u'Заархивированный вопрос')

@@ -1,0 +1,13 @@
+{% extends "core/base.html" %}
+
+{% block title %}Добавление категории{% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        Имя новой категории: {{ form.name }}
+        <input type="submit" value="Создать">
+        <br>
+    </form>
+    <a href={% url "categories:all_categories" %}>Back to all categories</a>
+{% endblock %}

@@ -1,7 +1,13 @@
 {% extends "core/base.html" %}
 
-{% block title %} Here you can add question {% endblock %}
+{% block title %}Добавление вопроса{% endblock %}
 
 {% block content %}
-    <div>Here</div>
+    <form action="" method="post">
+        {% csrf_token %}
+        Имя нового вопроса: {{ form.name }}<br>
+        Тело вопроса: <textarea name="question_body"></textarea><br>
+        Категории: {{ form.categories }}<br>
+        <input type="submit" value="Создать">
+    </form>
 {% endblock %}

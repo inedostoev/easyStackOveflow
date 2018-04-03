@@ -1,0 +1,13 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+    <form method="post" action="">
+        {% csrf_token %}
+        Username: {{ form.username }}<br>
+        First name: {{ form.first_name }}<br>
+        Second name: {{ form.last_name }}<br>
+        Email: {{ form.email }}<br>
+        Password: {{ form.password }}<br>
+        <button>Registration</button>
+    </form>
+{%  endblock %}

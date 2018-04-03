@@ -3,7 +3,20 @@
 {% block title %} {{ questions.name }} {{ questions.id }} {% endblock %}
 
 {% block content %}
+    <div>
+        <h2>{{ question.name }}</h2>
+        created:{{ question.created }}
+        {% if question.author == user %}
+            <a href={% url "questions:question_edit" question_id=question.id %}>EDIT</a>
+        {% endif %}
+    </div>
+    <div>
+        {{ question.question_body }}
+    </div>
+    <br>Список категорий:
+    {% for category in categories %}
+        <a href={% url "categories:category_detail" category_id=category.id %}>{{ category.name}}</a>
+    {% endfor %}
+    <br>
     <a href={% url "questions:question_list" %} >All question</a><br>
-    <div>This is question detail</div>
-
 {% endblock %}
