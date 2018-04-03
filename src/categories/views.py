@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from .models import Category
 from categories.forms import CategoriesForm, CategoryForm
+from django.views.generic.edit import CreateView
 
 
 def categories_list(request):
@@ -25,6 +26,19 @@ def categories_list(request):
 
     return render(request, 'category/category_list.html', contex)
 
+
+class CategoryCreate(CreateView):
+
+    model = Category
+    fields = 'name',
+    template_name = 'category/category_create.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super(CategoryCreate, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse("categories:category_detail", kwargs={'category_id': self.object.pk})
 
 def category_create(request):
 
